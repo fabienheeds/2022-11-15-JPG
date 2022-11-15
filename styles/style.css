@@ -49,3 +49,9 @@ form{
 .input-big-nud{
     width:90px;
 }
+
+#js-is-loaded{
+    background-color: skyblue;
+    color:tomato;
+    text-align:center;
+}
