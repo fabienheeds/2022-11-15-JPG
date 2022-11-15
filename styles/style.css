@@ -55,3 +55,21 @@ form{
     color:tomato;
     text-align:center;
 }
+
+#thumbnail{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height:70vh;
+    overflow-y:scroll;
+}
+#thumbnail>.meme-thumbnail{
+    width:32%;
+    height:200px;
+    padding:5px;
+}
+#thumbnail>.meme-thumbnail>*{
+    display:flex;
+    max-height:170px;
+    max-width:190px;
+}

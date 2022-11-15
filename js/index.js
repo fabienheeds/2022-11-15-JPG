@@ -1,5 +1,3 @@
-
-
 /**
  * Fonction de loader
  * @param {*} sdc 
@@ -10,8 +8,6 @@
 function loadJs(sdc)
 {
     var divJsIsLoaded = document.querySelector('#js-is-loaded');
-
-    console.log(divJsIsLoaded);
     // gestion du style
     divJsIsLoaded.style.color = "white";
     divJsIsLoaded.style.backgroundColor = "green";
@@ -25,8 +21,8 @@ function loadJs(sdc)
     // mais la variable reste en mémoire
     divJsIsLoaded.remove();
 
+    setNavbarEvent();
 }
-
 
 // écouteur sur la fin du chargement du DOM
 // quand la page est chargé, on lance la fontion loadJs()
