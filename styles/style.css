@@ -1,0 +1,51 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height:95vh;
+}
+header,footer{
+    flex:1;
+}
+#wrapper{
+    display:flex;
+    flex-direction: row;
+    flex-grow: 1;
+    padding:5px 20px;
+}
+#wrapper>*:nth-child(1){
+    display:flex;
+    flex-grow:1;
+}
+
+footer{
+    text-align: center;
+}
+
+.header_dot{
+
+}
+
+.header_js{
+
+}
+
+form{
+    text-align:center;
+}
+
+.flex-cols{
+    display:flex;
+    justify-content: space-between;
+    text-align:center;
+}
+
+.flex-cols>*{
+    text-align:center;
+}
+
+.input-small-nud{
+    width:50px;
+}
+.input-big-nud{
+    width:90px;
+}
