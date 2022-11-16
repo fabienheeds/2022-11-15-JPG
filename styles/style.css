@@ -4,7 +4,7 @@ body{
     height:95vh;
 }
 header,footer{
-    flex:1;
+    /* flex:1; */
 }
 #wrapper{
     display:flex;
