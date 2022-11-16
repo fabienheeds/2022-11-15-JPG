@@ -59,7 +59,6 @@ function linkCreate(evt)
     // ici une ouverture de lien vers le href
     evt.preventDefault();
     console.log("fonction de create", evt);
-    document.getElementById("wrapper").innerHTML = "/vues/create.html";
     //
     setActiveLinkInNavbar(evt);
     //
@@ -107,8 +106,6 @@ function loadPage(pageHref, callback)
                 // gestion de la callback
                 // ex: désactiver la gestion du FORM par défaut
                 // on envoi le div  à la volée à la fonction callback
-                //
-                // ??? pourquoi undefined avant ?
                 //
                 if (typeof callback === 'function')
                 {

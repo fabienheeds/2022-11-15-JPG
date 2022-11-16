@@ -1,0 +1,46 @@
+{
+    "memes" : [
+        {
+            "id": 0,
+            "titre": "1er meme",
+            "text": "trop bien",
+            "x": 100,
+            "y": 100,
+            "fontSize": 25,
+            "color": "#23AB8E",
+            "fontWeight": "900",
+            "underline": true,
+            "italic": true,
+            "imageId": 0
+        },
+        {
+            "id": 1,
+            "titre": "2eme meme",
+            "text": "trop frais",
+            "x": 100,
+            "y": 100,
+            "fontSize": 25,
+            "color": "#23AB8E",
+            "fontWeight": "900",
+            "underline": true,
+            "italic": true,
+            "imageId": 1
+        }
+    ],
+    "images" : [
+        {
+            "id":0,
+            "titre":"meme 1",
+            "href":"img_01.jpg",
+            "w":"500",
+            "h":"300"
+        },
+        {
+            "id":1,
+            "titre":"meme 2",
+            "href":"img_02.jpg",
+            "w":"400",
+            "h":"900"
+        }
+    ]
+}
