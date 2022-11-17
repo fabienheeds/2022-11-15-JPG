@@ -15,7 +15,7 @@ function setNavbarEvent()
  */
 function setActiveLinkInNavbar(evt, setActiveParentLi = true)
 {
-    console.log(evt);
+    // console.log(evt);
     // suppression de la classe ".active" sur tout les lien de la navbar
     var toutLesLi = document.querySelectorAll('nav>.navbar li');
     toutLesLi.forEach(element =>
@@ -34,7 +34,8 @@ function linkHome(evt)
     // échapement du comportement par défaut
     // ici une ouverture de lien vers le href
     evt.preventDefault();
-    console.log("fonction de retour à la home", evt);
+    // Routing
+    history.pushState('','Home','/');
     //
     setActiveLinkInNavbar(evt, false);
     //
@@ -46,18 +47,83 @@ function linkthumbnail(evt)
     // échapement du comportement par défaut
     // ici une ouverture de lien vers le href
     evt.preventDefault();
-    console.log("fonction de thumbnail", evt);
+    // Routing
+    history.pushState('','meme thumb','/thumbnail/');
     //
     setActiveLinkInNavbar(evt);
     //
-    loadPage('thumbnail.html');
+    // FETCH / PROMISE
+    //
+    // récupération de l'url via une constante
+    // `${REST_ADR}/images`
+    // Définition de 2 promises
+    const primages = fetch(`${REST_ADR}/images`).then(r => r.json());
+
+    const primemes = fetch(`${REST_ADR}/memes`).then(r => r.json())
+
+    // synchro d'exécution des then de promise de 2 promises
+    Promise.all([primages, primemes])
+        .then(arr =>
+        {
+            images = arr[0];
+            memes = arr[1];
+            //;
+            loadPage('thumbnail.html', container =>
+            {
+                //récup du model présent dans la vue
+                var memeModelNode = container.querySelector('#meme-');
+                // suppr. du model vide
+                memeModelNode.remove();
+                //
+                memes.forEach(meme =>
+                {
+                    // creation d'un doublon du noeud de model
+                    const memeNode = memeModelNode.cloneNode(true);
+                    // mise en place de l'id dynamique sur le clone
+                    memeNode.id = `meme-${meme.id}`;
+                    // récupération de l'image
+                    const imageDuMeme = images.find(img => img.id === meme.imageId);
+                    memeNode.querySelector('svg').setAttribute('cursor','pointer');
+                    // mise à jour du xlink:href
+                    const image = memeNode.querySelector('image');
+                    image.setAttribute('xlink:href', '/images/' + imageDuMeme.href);
+                    image.setAttribute('w', imageDuMeme.w);
+                    image.setAttribute('h', imageDuMeme.h);
+                    //
+                    const text = memeNode.querySelector('text');
+                    // mise à jour du text
+                    text.innerHTML = imageDuMeme.titre;
+                    // mise à jour du style
+                    text.style.textDecoration = meme.underline ? 'underline' : 'none';
+                    text.style.fontStyle = meme.italic ? 'italic' : 'normal';
+                    text.style.fontWeight = meme.fontWeight;
+                    text.style.fontSize = meme.fontSize + 'px';
+                    text.style.fill = meme.color;
+                    //
+                    // Gestion du lien sur l'image
+                    //
+                    memeNode.querySelector('svg').addEventListener('click', (evt) => { 
+                        linkCreate(evt, meme.id);
+                    })
+                    //
+                    memeNode.querySelector('svg').setAttribute('viewBox', '0 0 ' + imageDuMeme.w + ' ' + imageDuMeme.h);
+                    // ajout du clone dans le container
+                    container.querySelector('#thumbnail').append(memeNode);
+
+                    // gestion du meme
+                })
+            });
+        })
 }
 
-function linkCreate(evt)
+function linkCreate(evt, memeid)
 {
     // échapement du comportement par défaut
     // ici une ouverture de lien vers le href
     evt.preventDefault();
+    // Routing
+    history.pushState('','meme creator',undefined!==memeid?`/creator/${memeid}`:'/creator/');
+    //
     console.log("fonction de create", evt);
     //
     setActiveLinkInNavbar(evt);

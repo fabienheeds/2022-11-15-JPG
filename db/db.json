@@ -6,11 +6,11 @@
             "text": "trop bien",
             "x": 100,
             "y": 100,
-            "fontSize": 25,
-            "color": "#23AB8E",
+            "fontSize": 150,
+            "color": "#FFFFFF",
             "fontWeight": "900",
             "underline": true,
-            "italic": true,
+            "italic": false,
             "imageId": 0
         },
         {
@@ -19,28 +19,48 @@
             "text": "trop frais",
             "x": 100,
             "y": 100,
-            "fontSize": 25,
-            "color": "#23AB8E",
+            "fontSize": 120,
+            "color": "#c0392b",
             "fontWeight": "900",
-            "underline": true,
+            "underline": false,
             "italic": true,
             "imageId": 1
+        },
+        {
+            "id": 3,
+            "titre": "3eme meme",
+            "text": "yoooooo",
+            "x": 100,
+            "y": 100,
+            "fontSize": 190,
+            "color": "#23AB8E",
+            "fontWeight": "900",
+            "underline": false,
+            "italic": false,
+            "imageId": 2
         }
     ],
     "images" : [
         {
             "id":0,
-            "titre":"meme 1",
+            "titre":"Take my money",
             "href":"img_01.jpg",
-            "w":"500",
-            "h":"300"
+            "w":"1920",
+            "h":"1080"
         },
         {
             "id":1,
-            "titre":"meme 2",
+            "titre":"smart guy",
             "href":"img_02.jpg",
-            "w":"400",
-            "h":"900"
+            "w":"1200",
+            "h":"720"
+        },
+        {
+            "id":2,
+            "titre":"OVH",
+            "href":"img_03.jpg", 
+            "w":"976",
+            "h":"549"
         }
     ]
 }
