@@ -5,7 +5,7 @@
  * @returns int un chiffre
  * @TODO huuuuuu
  */
-function loadJs(sdc)
+function loadJs(evt)
 {
     var divJsIsLoaded = document.querySelector('#js-is-loaded');
     // gestion du style
@@ -22,6 +22,9 @@ function loadJs(sdc)
     divJsIsLoaded.remove();
 
     setNavbarEvent();
+    //
+    // initialisation du routing
+    initRoutes(evt);
 }
 
 // écouteur sur la fin du chargement du DOM

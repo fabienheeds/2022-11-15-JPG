@@ -1,3 +1,15 @@
+
+const initRoutes=(evt) => {
+    const locationPath = location.pathname;
+    if (locationPath.startsWith('thumbnail')) {
+        linkthumbnail(evt);
+    }else if(locationPath.startsWith('/creator')){
+        linkCreate(evt);
+    }else{
+        linkHome(evt);
+    }
+}
+
 /**
  * gestion de la navigation
  */
@@ -136,6 +148,7 @@ function linkCreate(evt, memeid)
         var form = nodeBase.querySelector('form');
     });
 }
+
 
 /**
  * 
