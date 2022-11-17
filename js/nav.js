@@ -1,11 +1,15 @@
 
-const initRoutes=(evt) => {
+const initRoutes = (evt) =>
+{
     const locationPath = location.pathname;
-    if (locationPath.startsWith('thumbnail')) {
+    if (locationPath.startsWith('thumbnail'))
+    {
         linkthumbnail(evt);
-    }else if(locationPath.startsWith('/creator')){
+    } else if (locationPath.startsWith('/creator'))
+    {
         linkCreate(evt);
-    }else{
+    } else
+    {
         linkHome(evt);
     }
 }
@@ -35,9 +39,21 @@ function setActiveLinkInNavbar(evt, setActiveParentLi = true)
         element.classList.remove('active');
     });
     // ajout de la class ".active" sur le btn cliqué
+    // en fonction du routing et non sur quel btn on a cliqué (evt)
+    // ça gère le liens direct dans l'url du navigateur
+    // ex: http://localhost:3000/creator/
     if (setActiveParentLi)
     {
-        evt.target.parentElement.classList.add('active');
+        // evt.target.parentElement.classList.add('active');
+        const locationPath = location.pathname;
+        if (locationPath.startsWith('thumbnail'))
+        {
+            document.querySelector('nav #link-thumb').parentElement.classList.add('active');
+        }
+        else if (locationPath.startsWith('/creator'))
+        {
+            document.querySelector('nav #link-create').parentElement.classList.add('active');
+        }
     }
 }
 
@@ -47,7 +63,7 @@ function linkHome(evt)
     // ici une ouverture de lien vers le href
     evt.preventDefault();
     // Routing
-    history.pushState('','Home','/');
+    history.pushState('', 'Home', '/');
     //
     setActiveLinkInNavbar(evt, false);
     //
@@ -60,7 +76,7 @@ function linkthumbnail(evt)
     // ici une ouverture de lien vers le href
     evt.preventDefault();
     // Routing
-    history.pushState('','meme thumb','/thumbnail/');
+    history.pushState('', 'meme thumb', '/thumbnail/');
     //
     setActiveLinkInNavbar(evt);
     //
@@ -95,7 +111,7 @@ function linkthumbnail(evt)
                     memeNode.id = `meme-${meme.id}`;
                     // récupération de l'image
                     const imageDuMeme = images.find(img => img.id === meme.imageId);
-                    memeNode.querySelector('svg').setAttribute('cursor','pointer');
+                    memeNode.querySelector('svg').setAttribute('cursor', 'pointer');
                     // mise à jour du xlink:href
                     const image = memeNode.querySelector('image');
                     image.setAttribute('xlink:href', '/images/' + imageDuMeme.href);
@@ -114,7 +130,8 @@ function linkthumbnail(evt)
                     //
                     // Gestion du lien sur l'image
                     //
-                    memeNode.querySelector('svg').addEventListener('click', (evt) => { 
+                    memeNode.querySelector('svg').addEventListener('click', (evt) =>
+                    {
                         linkCreate(evt, meme.id);
                     })
                     //
@@ -134,7 +151,7 @@ function linkCreate(evt, memeid)
     // ici une ouverture de lien vers le href
     evt.preventDefault();
     // Routing
-    history.pushState('','meme creator',undefined!==memeid?`/creator/${memeid}`:'/creator/');
+    history.pushState('', 'meme creator', undefined !== memeid ? `/creator/${memeid}` : '/creator/');
     //
     console.log("fonction de create", evt);
     //
