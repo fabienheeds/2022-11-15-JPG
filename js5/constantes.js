@@ -1,7 +1,10 @@
-const REST_ADR = "http://localhost:5679";
+const REST_ADR = "http://localhost:5679"
+export {REST_ADR as default};
+// export de la constante pour la récupérer ailleurs via import (ex: nav.js)
+   
 //objet constant
 // impossible à modifier/supprimer
-const CONFIG_DATA = Object.freeze({
+export const CONFIG_DATA = Object.freeze({
     rest_adr: "http://localhost",
     rest_port: 5679,
 });
